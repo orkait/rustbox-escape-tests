@@ -3,288 +3,56 @@
   "description": "Verify sandbox contains malicious code",
   "tests": [
     {
-      "name": "fork_bomb_python",
-      "file": "python/fork_bomb.py",
-      "language": "python",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "TLE",
-          "MLE",
-          "SIG"
-        ]
-      },
-      "description": "pids.max must prevent fork() [python]"
-    },
-    {
-      "name": "fork_bomb_c",
-      "file": "c/fork_bomb.c",
+      "name": "clone_newuser_c",
+      "file": "c/clone_newuser.c",
       "language": "c",
-      "timeout_sec": 15,
+      "timeout_sec": 10,
       "expect": {
         "verdict_any": [
           "RE",
-          "TLE",
-          "MLE",
           "SIG"
         ]
       },
-      "description": "pids.max must prevent fork() [c]"
+      "description": "seccomp must block CLONE_NEWUSER [c]"
     },
     {
-      "name": "fork_bomb_cpp",
-      "file": "cpp/fork_bomb.cpp",
+      "name": "clone_newuser_cpp",
+      "file": "cpp/clone_newuser.cpp",
       "language": "cpp",
-      "timeout_sec": 15,
+      "timeout_sec": 10,
       "expect": {
         "verdict_any": [
           "RE",
-          "TLE",
-          "MLE",
           "SIG"
         ]
       },
-      "description": "pids.max must prevent fork() [cpp]"
+      "description": "seccomp must block CLONE_NEWUSER [cpp]"
     },
     {
-      "name": "fork_bomb_go",
-      "file": "go/fork_bomb.go",
+      "name": "clone_newuser_go",
+      "file": "go/clone_newuser.go",
       "language": "go",
-      "timeout_sec": 15,
+      "timeout_sec": 10,
       "expect": {
         "verdict_any": [
           "RE",
-          "TLE",
-          "MLE",
           "SIG"
         ]
       },
-      "description": "pids.max must prevent fork() [go]"
+      "description": "seccomp must block CLONE_NEWUSER [go]"
     },
     {
-      "name": "fork_bomb_rust",
-      "file": "rust/fork_bomb.rs",
-      "language": "rust",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "TLE",
-          "MLE",
-          "SIG"
-        ]
-      },
-      "description": "pids.max must prevent fork() [rust]"
-    },
-    {
-      "name": "thread_bomb_python",
-      "file": "python/thread_bomb.py",
+      "name": "clone_newuser_python",
+      "file": "python/clone_newuser.py",
       "language": "python",
-      "timeout_sec": 15,
+      "timeout_sec": 10,
       "expect": {
         "verdict_any": [
           "RE",
-          "TLE",
-          "MLE",
           "SIG"
         ]
       },
-      "description": "pids.max must prevent thread creation [python]"
-    },
-    {
-      "name": "thread_bomb_c",
-      "file": "c/thread_bomb.c",
-      "language": "c",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "TLE",
-          "MLE",
-          "SIG"
-        ]
-      },
-      "description": "pids.max must prevent thread creation [c]"
-    },
-    {
-      "name": "thread_bomb_cpp",
-      "file": "cpp/thread_bomb.cpp",
-      "language": "cpp",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "TLE",
-          "MLE",
-          "SIG"
-        ]
-      },
-      "description": "pids.max must prevent thread creation [cpp]"
-    },
-    {
-      "name": "thread_bomb_go",
-      "file": "go/thread_bomb.go",
-      "language": "go",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "TLE",
-          "MLE",
-          "SIG"
-        ]
-      },
-      "description": "pids.max must prevent thread creation [go]"
-    },
-    {
-      "name": "thread_bomb_rust",
-      "file": "rust/thread_bomb.rs",
-      "language": "rust",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "TLE",
-          "MLE",
-          "SIG"
-        ]
-      },
-      "description": "pids.max must prevent thread creation [rust]"
-    },
-    {
-      "name": "thread_bomb_java",
-      "file": "java/thread_bomb.java",
-      "language": "java",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "TLE",
-          "MLE",
-          "SIG"
-        ]
-      },
-      "description": "pids.max must prevent thread creation [java]"
-    },
-    {
-      "name": "memory_bomb_python",
-      "file": "python/memory_bomb.py",
-      "language": "python",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "MLE",
-          "TLE"
-        ]
-      },
-      "description": "memory.max must OOM kill or wall timer kills [python]"
-    },
-    {
-      "name": "memory_bomb_c",
-      "file": "c/memory_bomb.c",
-      "language": "c",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "MLE",
-          "TLE"
-        ]
-      },
-      "description": "memory.max must OOM kill or wall timer kills [c]"
-    },
-    {
-      "name": "memory_bomb_cpp",
-      "file": "cpp/memory_bomb.cpp",
-      "language": "cpp",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "MLE",
-          "TLE"
-        ]
-      },
-      "description": "memory.max must OOM kill or wall timer kills [cpp]"
-    },
-    {
-      "name": "memory_bomb_go",
-      "file": "go/memory_bomb.go",
-      "language": "go",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "MLE",
-          "TLE"
-        ]
-      },
-      "description": "memory.max must OOM kill or wall timer kills [go]"
-    },
-    {
-      "name": "memory_bomb_rust",
-      "file": "rust/memory_bomb.rs",
-      "language": "rust",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "MLE",
-          "TLE"
-        ]
-      },
-      "description": "memory.max must OOM kill or wall timer kills [rust]"
-    },
-    {
-      "name": "memory_bomb_java",
-      "file": "java/memory_bomb.java",
-      "language": "java",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "MLE",
-          "TLE"
-        ]
-      },
-      "description": "memory.max must OOM kill or wall timer kills [java]"
-    },
-    {
-      "name": "memory_bomb_javascript",
-      "file": "javascript/memory_bomb.js",
-      "language": "javascript",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "MLE",
-          "TLE"
-        ]
-      },
-      "description": "memory.max must OOM kill or wall timer kills [javascript]"
-    },
-    {
-      "name": "memory_bomb_typescript",
-      "file": "typescript/memory_bomb.ts",
-      "language": "typescript",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "MLE",
-          "TLE"
-        ]
-      },
-      "description": "memory.max must OOM kill or wall timer kills [typescript]"
-    },
-    {
-      "name": "cpu_spin_python",
-      "file": "python/cpu_spin.py",
-      "language": "python",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "TLE",
-          "SIG",
-          "MLE"
-        ]
-      },
-      "description": "wall timer must kill infinite loop [python]"
+      "description": "seccomp must block CLONE_NEWUSER [python]"
     },
     {
       "name": "cpu_spin_c",
@@ -332,21 +100,6 @@
       "description": "wall timer must kill infinite loop [go]"
     },
     {
-      "name": "cpu_spin_rust",
-      "file": "rust/cpu_spin.rs",
-      "language": "rust",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "TLE",
-          "SIG",
-          "MLE"
-        ]
-      },
-      "description": "wall timer must kill infinite loop [rust]"
-    },
-    {
       "name": "cpu_spin_java",
       "file": "java/cpu_spin.java",
       "language": "java",
@@ -377,6 +130,36 @@
       "description": "wall timer must kill infinite loop [javascript]"
     },
     {
+      "name": "cpu_spin_python",
+      "file": "python/cpu_spin.py",
+      "language": "python",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
+      },
+      "description": "wall timer must kill infinite loop [python]"
+    },
+    {
+      "name": "cpu_spin_rust",
+      "file": "rust/cpu_spin.rs",
+      "language": "rust",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
+      },
+      "description": "wall timer must kill infinite loop [rust]"
+    },
+    {
       "name": "cpu_spin_typescript",
       "file": "typescript/cpu_spin.ts",
       "language": "typescript",
@@ -392,1149 +175,16 @@
       "description": "wall timer must kill infinite loop [typescript]"
     },
     {
-      "name": "sigxcpu_catch_python",
-      "file": "python/sigxcpu_catch.py",
-      "language": "python",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "TLE",
-          "SIG",
-          "MLE"
-        ]
-      },
-      "description": "catching SIGXCPU must not bypass wall timer [python]"
-    },
-    {
-      "name": "sigxcpu_catch_c",
-      "file": "c/sigxcpu_catch.c",
-      "language": "c",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "TLE",
-          "SIG",
-          "MLE"
-        ]
-      },
-      "description": "catching SIGXCPU must not bypass wall timer [c]"
-    },
-    {
-      "name": "sigxcpu_catch_cpp",
-      "file": "cpp/sigxcpu_catch.cpp",
-      "language": "cpp",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "TLE",
-          "SIG",
-          "MLE"
-        ]
-      },
-      "description": "catching SIGXCPU must not bypass wall timer [cpp]"
-    },
-    {
-      "name": "sigxcpu_catch_go",
-      "file": "go/sigxcpu_catch.go",
-      "language": "go",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "TLE",
-          "SIG",
-          "MLE"
-        ]
-      },
-      "description": "catching SIGXCPU must not bypass wall timer [go]"
-    },
-    {
-      "name": "sigxcpu_catch_rust",
-      "file": "rust/sigxcpu_catch.rs",
-      "language": "rust",
-      "timeout_sec": 15,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "TLE",
-          "SIG",
-          "MLE"
-        ]
-      },
-      "description": "catching SIGXCPU must not bypass wall timer [rust]"
-    },
-    {
-      "name": "read_etc_passwd_python",
-      "file": "python/read_etc_passwd.py",
-      "language": "python",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chroot must hide /etc/passwd [python]"
-    },
-    {
-      "name": "read_etc_passwd_c",
-      "file": "c/read_etc_passwd.c",
+      "name": "devshm_noexec_check_c",
+      "file": "adversarial/c/devshm_noexec_check.c",
       "language": "c",
       "timeout_sec": 10,
       "expect": {
-        "verdict": "RE"
-      },
-      "description": "chroot must hide /etc/passwd [c]"
-    },
-    {
-      "name": "read_etc_passwd_cpp",
-      "file": "cpp/read_etc_passwd.cpp",
-      "language": "cpp",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chroot must hide /etc/passwd [cpp]"
-    },
-    {
-      "name": "read_etc_passwd_go",
-      "file": "go/read_etc_passwd.go",
-      "language": "go",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chroot must hide /etc/passwd [go]"
-    },
-    {
-      "name": "read_etc_passwd_rust",
-      "file": "rust/read_etc_passwd.rs",
-      "language": "rust",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chroot must hide /etc/passwd [rust]"
-    },
-    {
-      "name": "read_etc_passwd_java",
-      "file": "java/read_etc_passwd.java",
-      "language": "java",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chroot must hide /etc/passwd [java]"
-    },
-    {
-      "name": "read_etc_passwd_javascript",
-      "file": "javascript/read_etc_passwd.js",
-      "language": "javascript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chroot must hide /etc/passwd [javascript]"
-    },
-    {
-      "name": "read_etc_passwd_typescript",
-      "file": "typescript/read_etc_passwd.ts",
-      "language": "typescript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chroot must hide /etc/passwd [typescript]"
-    },
-    {
-      "name": "read_etc_shadow_python",
-      "file": "python/read_etc_shadow.py",
-      "language": "python",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chroot must hide /etc/shadow [python]"
-    },
-    {
-      "name": "read_etc_shadow_c",
-      "file": "c/read_etc_shadow.c",
-      "language": "c",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chroot must hide /etc/shadow [c]"
-    },
-    {
-      "name": "read_etc_shadow_cpp",
-      "file": "cpp/read_etc_shadow.cpp",
-      "language": "cpp",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chroot must hide /etc/shadow [cpp]"
-    },
-    {
-      "name": "read_etc_shadow_go",
-      "file": "go/read_etc_shadow.go",
-      "language": "go",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chroot must hide /etc/shadow [go]"
-    },
-    {
-      "name": "read_etc_shadow_rust",
-      "file": "rust/read_etc_shadow.rs",
-      "language": "rust",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chroot must hide /etc/shadow [rust]"
-    },
-    {
-      "name": "read_etc_shadow_java",
-      "file": "java/read_etc_shadow.java",
-      "language": "java",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chroot must hide /etc/shadow [java]"
-    },
-    {
-      "name": "read_etc_shadow_javascript",
-      "file": "javascript/read_etc_shadow.js",
-      "language": "javascript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chroot must hide /etc/shadow [javascript]"
-    },
-    {
-      "name": "read_etc_shadow_typescript",
-      "file": "typescript/read_etc_shadow.ts",
-      "language": "typescript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chroot must hide /etc/shadow [typescript]"
-    },
-    {
-      "name": "write_to_bin_python",
-      "file": "python/write_to_bin.py",
-      "language": "python",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "filesystem must be read-only [python]"
-    },
-    {
-      "name": "write_to_bin_c",
-      "file": "c/write_to_bin.c",
-      "language": "c",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "filesystem must be read-only [c]"
-    },
-    {
-      "name": "write_to_bin_cpp",
-      "file": "cpp/write_to_bin.cpp",
-      "language": "cpp",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "filesystem must be read-only [cpp]"
-    },
-    {
-      "name": "write_to_bin_go",
-      "file": "go/write_to_bin.go",
-      "language": "go",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "filesystem must be read-only [go]"
-    },
-    {
-      "name": "write_to_bin_rust",
-      "file": "rust/write_to_bin.rs",
-      "language": "rust",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "filesystem must be read-only [rust]"
-    },
-    {
-      "name": "write_to_bin_java",
-      "file": "java/write_to_bin.java",
-      "language": "java",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "filesystem must be read-only [java]"
-    },
-    {
-      "name": "write_to_bin_javascript",
-      "file": "javascript/write_to_bin.js",
-      "language": "javascript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "filesystem must be read-only [javascript]"
-    },
-    {
-      "name": "write_to_bin_typescript",
-      "file": "typescript/write_to_bin.ts",
-      "language": "typescript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "filesystem must be read-only [typescript]"
-    },
-    {
-      "name": "escape_chroot_python",
-      "file": "python/escape_chroot.py",
-      "language": "python",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chdir('..') must not escape chroot [python]"
-    },
-    {
-      "name": "escape_chroot_c",
-      "file": "c/escape_chroot.c",
-      "language": "c",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chdir('..') must not escape chroot [c]"
-    },
-    {
-      "name": "escape_chroot_cpp",
-      "file": "cpp/escape_chroot.cpp",
-      "language": "cpp",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chdir('..') must not escape chroot [cpp]"
-    },
-    {
-      "name": "escape_chroot_go",
-      "file": "go/escape_chroot.go",
-      "language": "go",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chdir('..') must not escape chroot [go]"
-    },
-    {
-      "name": "escape_chroot_rust",
-      "file": "rust/escape_chroot.rs",
-      "language": "rust",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chdir('..') must not escape chroot [rust]"
-    },
-    {
-      "name": "escape_chroot_java",
-      "file": "java/escape_chroot.java",
-      "language": "java",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chdir('..') must not escape chroot [java]"
-    },
-    {
-      "name": "escape_chroot_javascript",
-      "file": "javascript/escape_chroot.js",
-      "language": "javascript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chdir('..') must not escape chroot [javascript]"
-    },
-    {
-      "name": "escape_chroot_typescript",
-      "file": "typescript/escape_chroot.ts",
-      "language": "typescript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "chdir('..') must not escape chroot [typescript]"
-    },
-    {
-      "name": "read_proc_cpuinfo_python",
-      "file": "python/read_proc_cpuinfo.py",
-      "language": "python",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/proc/cpuinfo must not be visible [python]"
-    },
-    {
-      "name": "read_proc_cpuinfo_c",
-      "file": "c/read_proc_cpuinfo.c",
-      "language": "c",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/proc/cpuinfo must not be visible [c]"
-    },
-    {
-      "name": "read_proc_cpuinfo_cpp",
-      "file": "cpp/read_proc_cpuinfo.cpp",
-      "language": "cpp",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/proc/cpuinfo must not be visible [cpp]"
-    },
-    {
-      "name": "read_proc_cpuinfo_go",
-      "file": "go/read_proc_cpuinfo.go",
-      "language": "go",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/proc/cpuinfo must not be visible [go]"
-    },
-    {
-      "name": "read_proc_cpuinfo_rust",
-      "file": "rust/read_proc_cpuinfo.rs",
-      "language": "rust",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/proc/cpuinfo must not be visible [rust]"
-    },
-    {
-      "name": "read_proc_cpuinfo_java",
-      "file": "java/read_proc_cpuinfo.java",
-      "language": "java",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/proc/cpuinfo must not be visible [java]"
-    },
-    {
-      "name": "read_proc_cpuinfo_javascript",
-      "file": "javascript/read_proc_cpuinfo.js",
-      "language": "javascript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/proc/cpuinfo must not be visible [javascript]"
-    },
-    {
-      "name": "read_proc_cpuinfo_typescript",
-      "file": "typescript/read_proc_cpuinfo.ts",
-      "language": "typescript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/proc/cpuinfo must not be visible [typescript]"
-    },
-    {
-      "name": "read_proc_meminfo_python",
-      "file": "python/read_proc_meminfo.py",
-      "language": "python",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/proc/meminfo must not be visible [python]"
-    },
-    {
-      "name": "read_proc_meminfo_c",
-      "file": "c/read_proc_meminfo.c",
-      "language": "c",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/proc/meminfo must not be visible [c]"
-    },
-    {
-      "name": "read_proc_meminfo_cpp",
-      "file": "cpp/read_proc_meminfo.cpp",
-      "language": "cpp",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/proc/meminfo must not be visible [cpp]"
-    },
-    {
-      "name": "read_proc_meminfo_go",
-      "file": "go/read_proc_meminfo.go",
-      "language": "go",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/proc/meminfo must not be visible [go]"
-    },
-    {
-      "name": "read_proc_meminfo_rust",
-      "file": "rust/read_proc_meminfo.rs",
-      "language": "rust",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/proc/meminfo must not be visible [rust]"
-    },
-    {
-      "name": "read_proc_meminfo_java",
-      "file": "java/read_proc_meminfo.java",
-      "language": "java",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/proc/meminfo must not be visible [java]"
-    },
-    {
-      "name": "read_proc_meminfo_javascript",
-      "file": "javascript/read_proc_meminfo.js",
-      "language": "javascript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/proc/meminfo must not be visible [javascript]"
-    },
-    {
-      "name": "read_proc_meminfo_typescript",
-      "file": "typescript/read_proc_meminfo.ts",
-      "language": "typescript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/proc/meminfo must not be visible [typescript]"
-    },
-    {
-      "name": "read_sys_hardware_python",
-      "file": "python/read_sys_hardware.py",
-      "language": "python",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/sys must be empty tmpfs [python]"
-    },
-    {
-      "name": "read_sys_hardware_c",
-      "file": "c/read_sys_hardware.c",
-      "language": "c",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/sys must be empty tmpfs [c]"
-    },
-    {
-      "name": "read_sys_hardware_cpp",
-      "file": "cpp/read_sys_hardware.cpp",
-      "language": "cpp",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/sys must be empty tmpfs [cpp]"
-    },
-    {
-      "name": "read_sys_hardware_go",
-      "file": "go/read_sys_hardware.go",
-      "language": "go",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/sys must be empty tmpfs [go]"
-    },
-    {
-      "name": "read_sys_hardware_rust",
-      "file": "rust/read_sys_hardware.rs",
-      "language": "rust",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/sys must be empty tmpfs [rust]"
-    },
-    {
-      "name": "read_sys_hardware_java",
-      "file": "java/read_sys_hardware.java",
-      "language": "java",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/sys must be empty tmpfs [java]"
-    },
-    {
-      "name": "read_sys_hardware_javascript",
-      "file": "javascript/read_sys_hardware.js",
-      "language": "javascript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/sys must be empty tmpfs [javascript]"
-    },
-    {
-      "name": "read_sys_hardware_typescript",
-      "file": "typescript/read_sys_hardware.ts",
-      "language": "typescript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "/sys must be empty tmpfs [typescript]"
-    },
-    {
-      "name": "clone_newuser_python",
-      "file": "python/clone_newuser.py",
-      "language": "python",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "seccomp must block CLONE_NEWUSER [python]"
-    },
-    {
-      "name": "clone_newuser_c",
-      "file": "c/clone_newuser.c",
-      "language": "c",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "seccomp must block CLONE_NEWUSER [c]"
-    },
-    {
-      "name": "clone_newuser_cpp",
-      "file": "cpp/clone_newuser.cpp",
-      "language": "cpp",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "seccomp must block CLONE_NEWUSER [cpp]"
-    },
-    {
-      "name": "clone_newuser_go",
-      "file": "go/clone_newuser.go",
-      "language": "go",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "seccomp must block CLONE_NEWUSER [go]"
-    },
-    {
-      "name": "mount_attempt_python",
-      "file": "python/mount_attempt.py",
-      "language": "python",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "seccomp must block mount() [python]"
-    },
-    {
-      "name": "mount_attempt_c",
-      "file": "c/mount_attempt.c",
-      "language": "c",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "seccomp must block mount() [c]"
-    },
-    {
-      "name": "mount_attempt_cpp",
-      "file": "cpp/mount_attempt.cpp",
-      "language": "cpp",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "seccomp must block mount() [cpp]"
-    },
-    {
-      "name": "mount_attempt_go",
-      "file": "go/mount_attempt.go",
-      "language": "go",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "seccomp must block mount() [go]"
-    },
-    {
-      "name": "ptrace_attempt_python",
-      "file": "python/ptrace_attempt.py",
-      "language": "python",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "seccomp must block ptrace() [python]"
-    },
-    {
-      "name": "ptrace_attempt_c",
-      "file": "c/ptrace_attempt.c",
-      "language": "c",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "seccomp must block ptrace() [c]"
-    },
-    {
-      "name": "ptrace_attempt_cpp",
-      "file": "cpp/ptrace_attempt.cpp",
-      "language": "cpp",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "seccomp must block ptrace() [cpp]"
-    },
-    {
-      "name": "ptrace_attempt_go",
-      "file": "go/ptrace_attempt.go",
-      "language": "go",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "seccomp must block ptrace() [go]"
-    },
-    {
-      "name": "fd_exhaustion_python",
-      "file": "python/fd_exhaustion.py",
-      "language": "python",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "RLIMIT_NOFILE must cap open files [python]"
-    },
-    {
-      "name": "fd_exhaustion_c",
-      "file": "c/fd_exhaustion.c",
-      "language": "c",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "RLIMIT_NOFILE must cap open files [c]"
-    },
-    {
-      "name": "fd_exhaustion_cpp",
-      "file": "cpp/fd_exhaustion.cpp",
-      "language": "cpp",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "RLIMIT_NOFILE must cap open files [cpp]"
-    },
-    {
-      "name": "fd_exhaustion_go",
-      "file": "go/fd_exhaustion.go",
-      "language": "go",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "RLIMIT_NOFILE must cap open files [go]"
-    },
-    {
-      "name": "fd_exhaustion_rust",
-      "file": "rust/fd_exhaustion.rs",
-      "language": "rust",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "RLIMIT_NOFILE must cap open files [rust]"
-    },
-    {
-      "name": "fd_exhaustion_java",
-      "file": "java/fd_exhaustion.java",
-      "language": "java",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "RLIMIT_NOFILE must cap open files [java]"
-    },
-    {
-      "name": "fd_exhaustion_javascript",
-      "file": "javascript/fd_exhaustion.js",
-      "language": "javascript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "RLIMIT_NOFILE must cap open files [javascript]"
-    },
-    {
-      "name": "fd_exhaustion_typescript",
-      "file": "typescript/fd_exhaustion.ts",
-      "language": "typescript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "RLIMIT_NOFILE must cap open files [typescript]"
-    },
-    {
-      "name": "file_size_bomb_python",
-      "file": "python/file_size_bomb.py",
-      "language": "python",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "RLIMIT_FSIZE must cap file writes [python]"
-    },
-    {
-      "name": "file_size_bomb_c",
-      "file": "c/file_size_bomb.c",
-      "language": "c",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "RLIMIT_FSIZE must cap file writes [c]"
-    },
-    {
-      "name": "file_size_bomb_cpp",
-      "file": "cpp/file_size_bomb.cpp",
-      "language": "cpp",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "RLIMIT_FSIZE must cap file writes [cpp]"
-    },
-    {
-      "name": "file_size_bomb_go",
-      "file": "go/file_size_bomb.go",
-      "language": "go",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "RLIMIT_FSIZE must cap file writes [go]"
-    },
-    {
-      "name": "file_size_bomb_rust",
-      "file": "rust/file_size_bomb.rs",
-      "language": "rust",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "RLIMIT_FSIZE must cap file writes [rust]"
-    },
-    {
-      "name": "file_size_bomb_java",
-      "file": "java/file_size_bomb.java",
-      "language": "java",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "RLIMIT_FSIZE must cap file writes [java]"
-    },
-    {
-      "name": "file_size_bomb_javascript",
-      "file": "javascript/file_size_bomb.js",
-      "language": "javascript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "RLIMIT_FSIZE must cap file writes [javascript]"
-    },
-    {
-      "name": "file_size_bomb_typescript",
-      "file": "typescript/file_size_bomb.ts",
-      "language": "typescript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict_any": [
-          "RE",
-          "SIG"
-        ]
-      },
-      "description": "RLIMIT_FSIZE must cap file writes [typescript]"
-    },
-    {
-      "name": "inode_bomb_python",
-      "file": "python/inode_bomb.py",
-      "language": "python",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "tmpfs inode limit must cap file creation [python]"
-    },
-    {
-      "name": "inode_bomb_c",
-      "file": "c/inode_bomb.c",
-      "language": "c",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "tmpfs inode limit must cap file creation [c]"
-    },
-    {
-      "name": "inode_bomb_cpp",
-      "file": "cpp/inode_bomb.cpp",
-      "language": "cpp",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "tmpfs inode limit must cap file creation [cpp]"
-    },
-    {
-      "name": "inode_bomb_go",
-      "file": "go/inode_bomb.go",
-      "language": "go",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "tmpfs inode limit must cap file creation [go]"
-    },
-    {
-      "name": "inode_bomb_rust",
-      "file": "rust/inode_bomb.rs",
-      "language": "rust",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "tmpfs inode limit must cap file creation [rust]"
-    },
-    {
-      "name": "inode_bomb_java",
-      "file": "java/inode_bomb.java",
-      "language": "java",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "tmpfs inode limit must cap file creation [java]"
-    },
-    {
-      "name": "inode_bomb_javascript",
-      "file": "javascript/inode_bomb.js",
-      "language": "javascript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "tmpfs inode limit must cap file creation [javascript]"
-    },
-    {
-      "name": "inode_bomb_typescript",
-      "file": "typescript/inode_bomb.ts",
-      "language": "typescript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "tmpfs inode limit must cap file creation [typescript]"
-    },
-    {
-      "name": "tcp_connect_python",
-      "file": "python/tcp_connect.py",
-      "language": "python",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "network namespace must block TCP [python]"
-    },
-    {
-      "name": "tcp_connect_c",
-      "file": "c/tcp_connect.c",
-      "language": "c",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "network namespace must block TCP [c]"
-    },
-    {
-      "name": "tcp_connect_cpp",
-      "file": "cpp/tcp_connect.cpp",
-      "language": "cpp",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "network namespace must block TCP [cpp]"
-    },
-    {
-      "name": "tcp_connect_go",
-      "file": "go/tcp_connect.go",
-      "language": "go",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "network namespace must block TCP [go]"
-    },
-    {
-      "name": "tcp_connect_rust",
-      "file": "rust/tcp_connect.rs",
-      "language": "rust",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "network namespace must block TCP [rust]"
-    },
-    {
-      "name": "tcp_connect_java",
-      "file": "java/tcp_connect.java",
-      "language": "java",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "network namespace must block TCP [java]"
-    },
-    {
-      "name": "tcp_connect_javascript",
-      "file": "javascript/tcp_connect.js",
-      "language": "javascript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "network namespace must block TCP [javascript]"
-    },
-    {
-      "name": "tcp_connect_typescript",
-      "file": "typescript/tcp_connect.ts",
-      "language": "typescript",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "network namespace must block TCP [typescript]"
-    },
-    {
-      "name": "dns_lookup_python",
-      "file": "python/dns_lookup.py",
-      "language": "python",
-      "timeout_sec": 10,
-      "expect": {
-        "verdict": "RE"
-      },
-      "description": "network namespace must block DNS [python]"
+        "verdict": "AC",
+        "exit_code": 0,
+        "stdout_contains": "CONTAINED noexec EACCES"
+      },
+      "description": "MS_NOEXEC on /dev/shm must reject execve on dropped scripts"
     },
     {
       "name": "dns_lookup_c",
@@ -1587,6 +237,16 @@
       "description": "network namespace must block DNS [javascript]"
     },
     {
+      "name": "dns_lookup_python",
+      "file": "python/dns_lookup.py",
+      "language": "python",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "network namespace must block DNS [python]"
+    },
+    {
       "name": "dns_lookup_typescript",
       "file": "typescript/dns_lookup.ts",
       "language": "typescript",
@@ -1597,24 +257,96 @@
       "description": "network namespace must block DNS [typescript]"
     },
     {
-      "name": "setuid_root_python",
-      "file": "python/setuid_root.py",
-      "language": "python",
+      "name": "env_leak_check_c",
+      "file": "adversarial/c/env_leak_check.c",
+      "language": "c",
       "timeout_sec": 10,
       "expect": {
-        "verdict": "RE"
+        "verdict": "AC",
+        "exit_code": 0,
+        "stdout_contains": "CONTAINED no parent env secrets present"
       },
-      "description": "setuid(0) must fail after credential drop [python]"
+      "description": "payload env must not contain RUSTBOX_/TOKEN/SECRET/AWS_/CF_ vars"
     },
     {
-      "name": "setuid_root_c",
-      "file": "c/setuid_root.c",
+      "name": "escape_chroot_c",
+      "file": "c/escape_chroot.c",
       "language": "c",
       "timeout_sec": 10,
       "expect": {
         "verdict": "RE"
       },
-      "description": "setuid(0) must fail after credential drop [c]"
+      "description": "chdir('..') must not escape chroot [c]"
+    },
+    {
+      "name": "escape_chroot_cpp",
+      "file": "cpp/escape_chroot.cpp",
+      "language": "cpp",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chdir('..') must not escape chroot [cpp]"
+    },
+    {
+      "name": "escape_chroot_go",
+      "file": "go/escape_chroot.go",
+      "language": "go",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chdir('..') must not escape chroot [go]"
+    },
+    {
+      "name": "escape_chroot_java",
+      "file": "java/escape_chroot.java",
+      "language": "java",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chdir('..') must not escape chroot [java]"
+    },
+    {
+      "name": "escape_chroot_javascript",
+      "file": "javascript/escape_chroot.js",
+      "language": "javascript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chdir('..') must not escape chroot [javascript]"
+    },
+    {
+      "name": "escape_chroot_python",
+      "file": "python/escape_chroot.py",
+      "language": "python",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chdir('..') must not escape chroot [python]"
+    },
+    {
+      "name": "escape_chroot_rust",
+      "file": "rust/escape_chroot.rs",
+      "language": "rust",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chdir('..') must not escape chroot [rust]"
+    },
+    {
+      "name": "escape_chroot_typescript",
+      "file": "typescript/escape_chroot.ts",
+      "language": "typescript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chdir('..') must not escape chroot [typescript]"
     },
     {
       "name": "execve_setuid_binary_c",
@@ -1628,34 +360,1002 @@
       "description": "MS_NOSUID mount flag must strip setuid bit when exec-ing a root-owned +s binary; euid must remain unprivileged [c]"
     },
     {
-      "name": "setuid_root_cpp",
-      "file": "cpp/setuid_root.cpp",
+      "name": "fd_exhaustion_c",
+      "file": "c/fd_exhaustion.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "RLIMIT_NOFILE must cap open files [c]"
+    },
+    {
+      "name": "fd_exhaustion_cpp",
+      "file": "cpp/fd_exhaustion.cpp",
       "language": "cpp",
       "timeout_sec": 10,
       "expect": {
         "verdict": "RE"
       },
-      "description": "setuid(0) must fail after credential drop [cpp]"
+      "description": "RLIMIT_NOFILE must cap open files [cpp]"
     },
     {
-      "name": "setuid_root_go",
-      "file": "go/setuid_root.go",
+      "name": "fd_exhaustion_go",
+      "file": "go/fd_exhaustion.go",
       "language": "go",
       "timeout_sec": 10,
       "expect": {
         "verdict": "RE"
       },
-      "description": "setuid(0) must fail after credential drop [go]"
+      "description": "RLIMIT_NOFILE must cap open files [go]"
     },
     {
-      "name": "setgid_root_python",
-      "file": "python/setgid_root.py",
+      "name": "fd_exhaustion_java",
+      "file": "java/fd_exhaustion.java",
+      "language": "java",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "RLIMIT_NOFILE must cap open files [java]"
+    },
+    {
+      "name": "fd_exhaustion_javascript",
+      "file": "javascript/fd_exhaustion.js",
+      "language": "javascript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "RLIMIT_NOFILE must cap open files [javascript]"
+    },
+    {
+      "name": "fd_exhaustion_python",
+      "file": "python/fd_exhaustion.py",
       "language": "python",
       "timeout_sec": 10,
       "expect": {
         "verdict": "RE"
       },
-      "description": "setgid(0) must fail after credential drop [python]"
+      "description": "RLIMIT_NOFILE must cap open files [python]"
+    },
+    {
+      "name": "fd_exhaustion_rust",
+      "file": "rust/fd_exhaustion.rs",
+      "language": "rust",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "RLIMIT_NOFILE must cap open files [rust]"
+    },
+    {
+      "name": "fd_exhaustion_typescript",
+      "file": "typescript/fd_exhaustion.ts",
+      "language": "typescript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "RLIMIT_NOFILE must cap open files [typescript]"
+    },
+    {
+      "name": "file_size_bomb_c",
+      "file": "c/file_size_bomb.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "SIG"
+        ]
+      },
+      "description": "RLIMIT_FSIZE must cap file writes [c]"
+    },
+    {
+      "name": "file_size_bomb_cpp",
+      "file": "cpp/file_size_bomb.cpp",
+      "language": "cpp",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "SIG"
+        ]
+      },
+      "description": "RLIMIT_FSIZE must cap file writes [cpp]"
+    },
+    {
+      "name": "file_size_bomb_go",
+      "file": "go/file_size_bomb.go",
+      "language": "go",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "SIG"
+        ]
+      },
+      "description": "RLIMIT_FSIZE must cap file writes [go]"
+    },
+    {
+      "name": "file_size_bomb_java",
+      "file": "java/file_size_bomb.java",
+      "language": "java",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "SIG"
+        ]
+      },
+      "description": "RLIMIT_FSIZE must cap file writes [java]"
+    },
+    {
+      "name": "file_size_bomb_javascript",
+      "file": "javascript/file_size_bomb.js",
+      "language": "javascript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "SIG"
+        ]
+      },
+      "description": "RLIMIT_FSIZE must cap file writes [javascript]"
+    },
+    {
+      "name": "file_size_bomb_python",
+      "file": "python/file_size_bomb.py",
+      "language": "python",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "SIG"
+        ]
+      },
+      "description": "RLIMIT_FSIZE must cap file writes [python]"
+    },
+    {
+      "name": "file_size_bomb_rust",
+      "file": "rust/file_size_bomb.rs",
+      "language": "rust",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "SIG"
+        ]
+      },
+      "description": "RLIMIT_FSIZE must cap file writes [rust]"
+    },
+    {
+      "name": "file_size_bomb_typescript",
+      "file": "typescript/file_size_bomb.ts",
+      "language": "typescript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "SIG"
+        ]
+      },
+      "description": "RLIMIT_FSIZE must cap file writes [typescript]"
+    },
+    {
+      "name": "fork_bomb_c",
+      "file": "c/fork_bomb.c",
+      "language": "c",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "MLE",
+          "SIG"
+        ]
+      },
+      "description": "pids.max must prevent fork() [c]"
+    },
+    {
+      "name": "fork_bomb_cpp",
+      "file": "cpp/fork_bomb.cpp",
+      "language": "cpp",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "MLE",
+          "SIG"
+        ]
+      },
+      "description": "pids.max must prevent fork() [cpp]"
+    },
+    {
+      "name": "fork_bomb_go",
+      "file": "go/fork_bomb.go",
+      "language": "go",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "MLE",
+          "SIG"
+        ]
+      },
+      "description": "pids.max must prevent fork() [go]"
+    },
+    {
+      "name": "fork_bomb_python",
+      "file": "python/fork_bomb.py",
+      "language": "python",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "MLE",
+          "SIG"
+        ]
+      },
+      "description": "pids.max must prevent fork() [python]"
+    },
+    {
+      "name": "fork_bomb_rust",
+      "file": "rust/fork_bomb.rs",
+      "language": "rust",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "MLE",
+          "SIG"
+        ]
+      },
+      "description": "pids.max must prevent fork() [rust]"
+    },
+    {
+      "name": "hostname_check_c",
+      "file": "adversarial/c/hostname_check.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "AC",
+        "exit_code": 0,
+        "stdout_contains": "CONTAINED nodename=rustbox-sandbox"
+      },
+      "description": "uname nodename must be set to rustbox-sandbox after UTS unshare"
+    },
+    {
+      "name": "inode_bomb_c",
+      "file": "c/inode_bomb.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "tmpfs inode limit must cap file creation [c]"
+    },
+    {
+      "name": "inode_bomb_cpp",
+      "file": "cpp/inode_bomb.cpp",
+      "language": "cpp",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "tmpfs inode limit must cap file creation [cpp]"
+    },
+    {
+      "name": "inode_bomb_go",
+      "file": "go/inode_bomb.go",
+      "language": "go",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "tmpfs inode limit must cap file creation [go]"
+    },
+    {
+      "name": "inode_bomb_java",
+      "file": "java/inode_bomb.java",
+      "language": "java",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "tmpfs inode limit must cap file creation [java]"
+    },
+    {
+      "name": "inode_bomb_javascript",
+      "file": "javascript/inode_bomb.js",
+      "language": "javascript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "tmpfs inode limit must cap file creation [javascript]"
+    },
+    {
+      "name": "inode_bomb_python",
+      "file": "python/inode_bomb.py",
+      "language": "python",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "tmpfs inode limit must cap file creation [python]"
+    },
+    {
+      "name": "inode_bomb_rust",
+      "file": "rust/inode_bomb.rs",
+      "language": "rust",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "tmpfs inode limit must cap file creation [rust]"
+    },
+    {
+      "name": "inode_bomb_typescript",
+      "file": "typescript/inode_bomb.ts",
+      "language": "typescript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "tmpfs inode limit must cap file creation [typescript]"
+    },
+    {
+      "name": "memfd_secret_check_c",
+      "file": "adversarial/c/memfd_secret_check.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "SIG",
+          "AC"
+        ],
+        "stdout_contains": "CONTAINED"
+      },
+      "description": "seccomp must block syscall 447 (memfd_secret) - KillProcess action"
+    },
+    {
+      "name": "memory_bomb_c",
+      "file": "c/memory_bomb.c",
+      "language": "c",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "MLE",
+          "TLE"
+        ]
+      },
+      "description": "memory.max must OOM kill or wall timer kills [c]"
+    },
+    {
+      "name": "memory_bomb_cpp",
+      "file": "cpp/memory_bomb.cpp",
+      "language": "cpp",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "MLE",
+          "TLE"
+        ]
+      },
+      "description": "memory.max must OOM kill or wall timer kills [cpp]"
+    },
+    {
+      "name": "memory_bomb_go",
+      "file": "go/memory_bomb.go",
+      "language": "go",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "MLE",
+          "TLE"
+        ]
+      },
+      "description": "memory.max must OOM kill or wall timer kills [go]"
+    },
+    {
+      "name": "memory_bomb_java",
+      "file": "java/memory_bomb.java",
+      "language": "java",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "MLE",
+          "TLE"
+        ]
+      },
+      "description": "memory.max must OOM kill or wall timer kills [java]"
+    },
+    {
+      "name": "memory_bomb_javascript",
+      "file": "javascript/memory_bomb.js",
+      "language": "javascript",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "MLE",
+          "TLE"
+        ]
+      },
+      "description": "memory.max must OOM kill or wall timer kills [javascript]"
+    },
+    {
+      "name": "memory_bomb_python",
+      "file": "python/memory_bomb.py",
+      "language": "python",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "MLE",
+          "TLE"
+        ]
+      },
+      "description": "memory.max must OOM kill or wall timer kills [python]"
+    },
+    {
+      "name": "memory_bomb_rust",
+      "file": "rust/memory_bomb.rs",
+      "language": "rust",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "MLE",
+          "TLE"
+        ]
+      },
+      "description": "memory.max must OOM kill or wall timer kills [rust]"
+    },
+    {
+      "name": "memory_bomb_typescript",
+      "file": "typescript/memory_bomb.ts",
+      "language": "typescript",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "MLE",
+          "TLE"
+        ]
+      },
+      "description": "memory.max must OOM kill or wall timer kills [typescript]"
+    },
+    {
+      "name": "mount_attempt_c",
+      "file": "c/mount_attempt.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "SIG"
+        ]
+      },
+      "description": "seccomp must block mount() [c]"
+    },
+    {
+      "name": "mount_attempt_cpp",
+      "file": "cpp/mount_attempt.cpp",
+      "language": "cpp",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "SIG"
+        ]
+      },
+      "description": "seccomp must block mount() [cpp]"
+    },
+    {
+      "name": "mount_attempt_go",
+      "file": "go/mount_attempt.go",
+      "language": "go",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "SIG"
+        ]
+      },
+      "description": "seccomp must block mount() [go]"
+    },
+    {
+      "name": "mount_attempt_python",
+      "file": "python/mount_attempt.py",
+      "language": "python",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "SIG"
+        ]
+      },
+      "description": "seccomp must block mount() [python]"
+    },
+    {
+      "name": "prctl_set_name_spoof_c",
+      "file": "adversarial/c/prctl_set_name_spoof.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "AC",
+        "exit_code": 0,
+        "stdout_contains": "CONTAINED spoof_attempted_process_ran"
+      },
+      "description": "PR_SET_NAME spoofing does not break evidence collection or containment"
+    },
+    {
+      "name": "ptrace_attempt_c",
+      "file": "c/ptrace_attempt.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "SIG"
+        ]
+      },
+      "description": "seccomp must block ptrace() [c]"
+    },
+    {
+      "name": "ptrace_attempt_cpp",
+      "file": "cpp/ptrace_attempt.cpp",
+      "language": "cpp",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "SIG"
+        ]
+      },
+      "description": "seccomp must block ptrace() [cpp]"
+    },
+    {
+      "name": "ptrace_attempt_go",
+      "file": "go/ptrace_attempt.go",
+      "language": "go",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "SIG"
+        ]
+      },
+      "description": "seccomp must block ptrace() [go]"
+    },
+    {
+      "name": "ptrace_attempt_python",
+      "file": "python/ptrace_attempt.py",
+      "language": "python",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "SIG"
+        ]
+      },
+      "description": "seccomp must block ptrace() [python]"
+    },
+    {
+      "name": "read_etc_passwd_c",
+      "file": "c/read_etc_passwd.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chroot must hide /etc/passwd [c]"
+    },
+    {
+      "name": "read_etc_passwd_cpp",
+      "file": "cpp/read_etc_passwd.cpp",
+      "language": "cpp",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chroot must hide /etc/passwd [cpp]"
+    },
+    {
+      "name": "read_etc_passwd_go",
+      "file": "go/read_etc_passwd.go",
+      "language": "go",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chroot must hide /etc/passwd [go]"
+    },
+    {
+      "name": "read_etc_passwd_java",
+      "file": "java/read_etc_passwd.java",
+      "language": "java",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chroot must hide /etc/passwd [java]"
+    },
+    {
+      "name": "read_etc_passwd_javascript",
+      "file": "javascript/read_etc_passwd.js",
+      "language": "javascript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chroot must hide /etc/passwd [javascript]"
+    },
+    {
+      "name": "read_etc_passwd_python",
+      "file": "python/read_etc_passwd.py",
+      "language": "python",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chroot must hide /etc/passwd [python]"
+    },
+    {
+      "name": "read_etc_passwd_rust",
+      "file": "rust/read_etc_passwd.rs",
+      "language": "rust",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chroot must hide /etc/passwd [rust]"
+    },
+    {
+      "name": "read_etc_passwd_typescript",
+      "file": "typescript/read_etc_passwd.ts",
+      "language": "typescript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chroot must hide /etc/passwd [typescript]"
+    },
+    {
+      "name": "read_etc_shadow_c",
+      "file": "c/read_etc_shadow.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chroot must hide /etc/shadow [c]"
+    },
+    {
+      "name": "read_etc_shadow_cpp",
+      "file": "cpp/read_etc_shadow.cpp",
+      "language": "cpp",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chroot must hide /etc/shadow [cpp]"
+    },
+    {
+      "name": "read_etc_shadow_go",
+      "file": "go/read_etc_shadow.go",
+      "language": "go",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chroot must hide /etc/shadow [go]"
+    },
+    {
+      "name": "read_etc_shadow_java",
+      "file": "java/read_etc_shadow.java",
+      "language": "java",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chroot must hide /etc/shadow [java]"
+    },
+    {
+      "name": "read_etc_shadow_javascript",
+      "file": "javascript/read_etc_shadow.js",
+      "language": "javascript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chroot must hide /etc/shadow [javascript]"
+    },
+    {
+      "name": "read_etc_shadow_python",
+      "file": "python/read_etc_shadow.py",
+      "language": "python",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chroot must hide /etc/shadow [python]"
+    },
+    {
+      "name": "read_etc_shadow_rust",
+      "file": "rust/read_etc_shadow.rs",
+      "language": "rust",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chroot must hide /etc/shadow [rust]"
+    },
+    {
+      "name": "read_etc_shadow_typescript",
+      "file": "typescript/read_etc_shadow.ts",
+      "language": "typescript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "chroot must hide /etc/shadow [typescript]"
+    },
+    {
+      "name": "read_proc_cpuinfo_c",
+      "file": "c/read_proc_cpuinfo.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/proc/cpuinfo must not be visible [c]"
+    },
+    {
+      "name": "read_proc_cpuinfo_cpp",
+      "file": "cpp/read_proc_cpuinfo.cpp",
+      "language": "cpp",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/proc/cpuinfo must not be visible [cpp]"
+    },
+    {
+      "name": "read_proc_cpuinfo_go",
+      "file": "go/read_proc_cpuinfo.go",
+      "language": "go",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/proc/cpuinfo must not be visible [go]"
+    },
+    {
+      "name": "read_proc_cpuinfo_java",
+      "file": "java/read_proc_cpuinfo.java",
+      "language": "java",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/proc/cpuinfo must not be visible [java]"
+    },
+    {
+      "name": "read_proc_cpuinfo_javascript",
+      "file": "javascript/read_proc_cpuinfo.js",
+      "language": "javascript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/proc/cpuinfo must not be visible [javascript]"
+    },
+    {
+      "name": "read_proc_cpuinfo_python",
+      "file": "python/read_proc_cpuinfo.py",
+      "language": "python",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/proc/cpuinfo must not be visible [python]"
+    },
+    {
+      "name": "read_proc_cpuinfo_rust",
+      "file": "rust/read_proc_cpuinfo.rs",
+      "language": "rust",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/proc/cpuinfo must not be visible [rust]"
+    },
+    {
+      "name": "read_proc_cpuinfo_typescript",
+      "file": "typescript/read_proc_cpuinfo.ts",
+      "language": "typescript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/proc/cpuinfo must not be visible [typescript]"
+    },
+    {
+      "name": "read_proc_meminfo_c",
+      "file": "c/read_proc_meminfo.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/proc/meminfo must not be visible [c]"
+    },
+    {
+      "name": "read_proc_meminfo_cpp",
+      "file": "cpp/read_proc_meminfo.cpp",
+      "language": "cpp",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/proc/meminfo must not be visible [cpp]"
+    },
+    {
+      "name": "read_proc_meminfo_go",
+      "file": "go/read_proc_meminfo.go",
+      "language": "go",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/proc/meminfo must not be visible [go]"
+    },
+    {
+      "name": "read_proc_meminfo_java",
+      "file": "java/read_proc_meminfo.java",
+      "language": "java",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/proc/meminfo must not be visible [java]"
+    },
+    {
+      "name": "read_proc_meminfo_javascript",
+      "file": "javascript/read_proc_meminfo.js",
+      "language": "javascript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/proc/meminfo must not be visible [javascript]"
+    },
+    {
+      "name": "read_proc_meminfo_python",
+      "file": "python/read_proc_meminfo.py",
+      "language": "python",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/proc/meminfo must not be visible [python]"
+    },
+    {
+      "name": "read_proc_meminfo_rust",
+      "file": "rust/read_proc_meminfo.rs",
+      "language": "rust",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/proc/meminfo must not be visible [rust]"
+    },
+    {
+      "name": "read_proc_meminfo_typescript",
+      "file": "typescript/read_proc_meminfo.ts",
+      "language": "typescript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/proc/meminfo must not be visible [typescript]"
+    },
+    {
+      "name": "read_sys_hardware_c",
+      "file": "c/read_sys_hardware.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/sys must be empty tmpfs [c]"
+    },
+    {
+      "name": "read_sys_hardware_cpp",
+      "file": "cpp/read_sys_hardware.cpp",
+      "language": "cpp",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/sys must be empty tmpfs [cpp]"
+    },
+    {
+      "name": "read_sys_hardware_go",
+      "file": "go/read_sys_hardware.go",
+      "language": "go",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/sys must be empty tmpfs [go]"
+    },
+    {
+      "name": "read_sys_hardware_java",
+      "file": "java/read_sys_hardware.java",
+      "language": "java",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/sys must be empty tmpfs [java]"
+    },
+    {
+      "name": "read_sys_hardware_javascript",
+      "file": "javascript/read_sys_hardware.js",
+      "language": "javascript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/sys must be empty tmpfs [javascript]"
+    },
+    {
+      "name": "read_sys_hardware_python",
+      "file": "python/read_sys_hardware.py",
+      "language": "python",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/sys must be empty tmpfs [python]"
+    },
+    {
+      "name": "read_sys_hardware_rust",
+      "file": "rust/read_sys_hardware.rs",
+      "language": "rust",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/sys must be empty tmpfs [rust]"
+    },
+    {
+      "name": "read_sys_hardware_typescript",
+      "file": "typescript/read_sys_hardware.ts",
+      "language": "typescript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "/sys must be empty tmpfs [typescript]"
+    },
+    {
+      "name": "rlimit_values_check_c",
+      "file": "adversarial/c/rlimit_values_check.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "AC",
+        "exit_code": 0,
+        "stdout_contains": "CONTAINED rlimits match config"
+      },
+      "description": "RLIMIT_FSIZE/NPROC/NOFILE/CORE applied per-language config"
     },
     {
       "name": "setgid_root_c",
@@ -1686,6 +1386,393 @@
         "verdict": "RE"
       },
       "description": "setgid(0) must fail after credential drop [go]"
+    },
+    {
+      "name": "setgid_root_python",
+      "file": "python/setgid_root.py",
+      "language": "python",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "setgid(0) must fail after credential drop [python]"
+    },
+    {
+      "name": "setuid_root_c",
+      "file": "c/setuid_root.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "setuid(0) must fail after credential drop [c]"
+    },
+    {
+      "name": "setuid_root_cpp",
+      "file": "cpp/setuid_root.cpp",
+      "language": "cpp",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "setuid(0) must fail after credential drop [cpp]"
+    },
+    {
+      "name": "setuid_root_go",
+      "file": "go/setuid_root.go",
+      "language": "go",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "setuid(0) must fail after credential drop [go]"
+    },
+    {
+      "name": "setuid_root_python",
+      "file": "python/setuid_root.py",
+      "language": "python",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "setuid(0) must fail after credential drop [python]"
+    },
+    {
+      "name": "sigxcpu_catch_c",
+      "file": "c/sigxcpu_catch.c",
+      "language": "c",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
+      },
+      "description": "catching SIGXCPU must not bypass wall timer [c]"
+    },
+    {
+      "name": "sigxcpu_catch_cpp",
+      "file": "cpp/sigxcpu_catch.cpp",
+      "language": "cpp",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
+      },
+      "description": "catching SIGXCPU must not bypass wall timer [cpp]"
+    },
+    {
+      "name": "sigxcpu_catch_go",
+      "file": "go/sigxcpu_catch.go",
+      "language": "go",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
+      },
+      "description": "catching SIGXCPU must not bypass wall timer [go]"
+    },
+    {
+      "name": "sigxcpu_catch_python",
+      "file": "python/sigxcpu_catch.py",
+      "language": "python",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
+      },
+      "description": "catching SIGXCPU must not bypass wall timer [python]"
+    },
+    {
+      "name": "sigxcpu_catch_rust",
+      "file": "rust/sigxcpu_catch.rs",
+      "language": "rust",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
+      },
+      "description": "catching SIGXCPU must not bypass wall timer [rust]"
+    },
+    {
+      "name": "tcp_connect_c",
+      "file": "c/tcp_connect.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "network namespace must block TCP [c]"
+    },
+    {
+      "name": "tcp_connect_cpp",
+      "file": "cpp/tcp_connect.cpp",
+      "language": "cpp",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "network namespace must block TCP [cpp]"
+    },
+    {
+      "name": "tcp_connect_go",
+      "file": "go/tcp_connect.go",
+      "language": "go",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "network namespace must block TCP [go]"
+    },
+    {
+      "name": "tcp_connect_java",
+      "file": "java/tcp_connect.java",
+      "language": "java",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "network namespace must block TCP [java]"
+    },
+    {
+      "name": "tcp_connect_javascript",
+      "file": "javascript/tcp_connect.js",
+      "language": "javascript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "network namespace must block TCP [javascript]"
+    },
+    {
+      "name": "tcp_connect_python",
+      "file": "python/tcp_connect.py",
+      "language": "python",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "network namespace must block TCP [python]"
+    },
+    {
+      "name": "tcp_connect_rust",
+      "file": "rust/tcp_connect.rs",
+      "language": "rust",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "network namespace must block TCP [rust]"
+    },
+    {
+      "name": "tcp_connect_typescript",
+      "file": "typescript/tcp_connect.ts",
+      "language": "typescript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "network namespace must block TCP [typescript]"
+    },
+    {
+      "name": "thread_bomb_c",
+      "file": "c/thread_bomb.c",
+      "language": "c",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "MLE",
+          "SIG"
+        ]
+      },
+      "description": "pids.max must prevent thread creation [c]"
+    },
+    {
+      "name": "thread_bomb_cpp",
+      "file": "cpp/thread_bomb.cpp",
+      "language": "cpp",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "MLE",
+          "SIG"
+        ]
+      },
+      "description": "pids.max must prevent thread creation [cpp]"
+    },
+    {
+      "name": "thread_bomb_go",
+      "file": "go/thread_bomb.go",
+      "language": "go",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "MLE",
+          "SIG"
+        ]
+      },
+      "description": "pids.max must prevent thread creation [go]"
+    },
+    {
+      "name": "thread_bomb_java",
+      "file": "java/thread_bomb.java",
+      "language": "java",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "MLE",
+          "SIG"
+        ]
+      },
+      "description": "pids.max must prevent thread creation [java]"
+    },
+    {
+      "name": "thread_bomb_python",
+      "file": "python/thread_bomb.py",
+      "language": "python",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "MLE",
+          "SIG"
+        ]
+      },
+      "description": "pids.max must prevent thread creation [python]"
+    },
+    {
+      "name": "thread_bomb_rust",
+      "file": "rust/thread_bomb.rs",
+      "language": "rust",
+      "timeout_sec": 15,
+      "expect": {
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "MLE",
+          "SIG"
+        ]
+      },
+      "description": "pids.max must prevent thread creation [rust]"
+    },
+    {
+      "name": "tmp_noexec_check_c",
+      "file": "adversarial/c/tmp_noexec_check.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "AC",
+        "exit_code": 0,
+        "stdout_contains": "CONTAINED noexec EACCES"
+      },
+      "description": "MS_NOEXEC on /tmp must reject execve on dropped scripts"
+    },
+    {
+      "name": "write_to_bin_c",
+      "file": "c/write_to_bin.c",
+      "language": "c",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "filesystem must be read-only [c]"
+    },
+    {
+      "name": "write_to_bin_cpp",
+      "file": "cpp/write_to_bin.cpp",
+      "language": "cpp",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "filesystem must be read-only [cpp]"
+    },
+    {
+      "name": "write_to_bin_go",
+      "file": "go/write_to_bin.go",
+      "language": "go",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "filesystem must be read-only [go]"
+    },
+    {
+      "name": "write_to_bin_java",
+      "file": "java/write_to_bin.java",
+      "language": "java",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "filesystem must be read-only [java]"
+    },
+    {
+      "name": "write_to_bin_javascript",
+      "file": "javascript/write_to_bin.js",
+      "language": "javascript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "filesystem must be read-only [javascript]"
+    },
+    {
+      "name": "write_to_bin_python",
+      "file": "python/write_to_bin.py",
+      "language": "python",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "filesystem must be read-only [python]"
+    },
+    {
+      "name": "write_to_bin_rust",
+      "file": "rust/write_to_bin.rs",
+      "language": "rust",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "filesystem must be read-only [rust]"
+    },
+    {
+      "name": "write_to_bin_typescript",
+      "file": "typescript/write_to_bin.ts",
+      "language": "typescript",
+      "timeout_sec": 10,
+      "expect": {
+        "verdict": "RE"
+      },
+      "description": "filesystem must be read-only [typescript]"
     }
   ]
 }

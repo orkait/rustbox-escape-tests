@@ -1,10 +1,10 @@
 # rustbox-escape-tests
 
-Public adversarial regression suite for the [Rustbox](https://rustbox.orkait.com) code-execution sandbox. 148 attack payloads across 8 languages — fork bombs, kernel syscall exploits, chroot escapes, privilege escalation, network probes, info leaks, and more. Every test asserts a specific containment outcome.
+Public adversarial regression suite for the [Rustbox](https://rustbox.orkait.com) code-execution sandbox. 156 attack payloads across 8 languages — fork bombs, kernel syscall exploits, chroot escapes, privilege escalation, network probes, info leaks, and more. Every test asserts a specific containment outcome.
 
-**Current score on production Rustbox: 148 / 148 contained. 0 escapes.**
+**Current score on production Rustbox: 156 / 156 contained. 0 escapes.**
 
-[![contained](https://img.shields.io/badge/contained-148%2F148-success)](https://github.com/orkait/rustbox-escape-tests)
+[![contained](https://img.shields.io/badge/contained-156%2F156-success)](https://github.com/orkait/rustbox-escape-tests)
 [![license](https://img.shields.io/badge/license-MIT%20%2B%20CC--BY--4.0-blue)](#license)
 
 ---
@@ -44,13 +44,18 @@ run.sh             (generic runner — POST payloads to any Rustbox-compatible A
 | **Resource bombs** | `fork_bomb.*`, `memory_bomb.*`, `cpu_spin.*`, `fd_exhaustion.*`, `inode_bomb.*`, `file_size_bomb.*` |
 | **Execve abuse** | `execve_setuid_binary.c` — tests `MS_NOSUID` mount-flag enforcement |
 | **Signal abuse** | `sigxcpu_catch.*` — tries to catch SIGXCPU to outlive the CPU limit |
+| **Info leakage (env)** | `env_leak_check.*` — verifies no parent env vars (tokens, secrets) reach the sandbox |
+| **UTS isolation** | `hostname_check.*` — verifies UTS namespace hides host identity |
+| **Filesystem isolation** | `tmp_noexec_check.*`, `devshm_noexec_check.*` — MS_NOEXEC on /tmp and /dev/shm |
+| **Process spoofing** | `prctl_set_name_spoof.*` — PR_SET_NAME cannot spoof supervisor comm checks |
+| **Secret memory** | `memfd_secret_check.*` — syscall 447 blocked by seccomp |
 
 ## Running against a sandbox
 
 ```bash
 export RUSTBOX_API=https://rustbox-api.orkait.com
 export RUSTBOX_KEY=rb_live_your_key
-./run.sh                     # runs all 148 tests
+./run.sh                     # runs all 156 tests
 ./run.sh --lang c            # just one language
 ./run.sh --test fork_bomb_c  # single test by name
 ```
@@ -61,9 +66,9 @@ Output:
 [002] fork_bomb_c             PASS (verdict=PLE expected=any-of[RE,TLE,MLE,SIG])
 [003] ptrace_attempt_c        PASS (verdict=RE  exit=159  expected=RE)
 ...
-[148] execve_setuid_binary_c  PASS (verdict=AC  stdout has "OK")
+[156] memfd_secret_check_c    PASS (verdict=RE  expected=any-of[RE,SIG,AC])
 
-148 passed, 0 failed
+156 passed, 0 failed
 ```
 
 The runner is sandbox-agnostic. It speaks the same REST shape Rustbox does — `POST /api/submit`, `GET /api/result/{id}` — so any sandbox exposing that interface can be graded.
