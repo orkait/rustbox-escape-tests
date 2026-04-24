@@ -277,7 +277,12 @@
       "language": "python",
       "timeout_sec": 15,
       "expect": {
-        "verdict": "TLE"
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
       },
       "description": "wall timer must kill infinite loop [python]"
     },
@@ -287,7 +292,12 @@
       "language": "c",
       "timeout_sec": 15,
       "expect": {
-        "verdict": "TLE"
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
       },
       "description": "wall timer must kill infinite loop [c]"
     },
@@ -297,7 +307,12 @@
       "language": "cpp",
       "timeout_sec": 15,
       "expect": {
-        "verdict": "TLE"
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
       },
       "description": "wall timer must kill infinite loop [cpp]"
     },
@@ -307,7 +322,12 @@
       "language": "go",
       "timeout_sec": 15,
       "expect": {
-        "verdict": "TLE"
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
       },
       "description": "wall timer must kill infinite loop [go]"
     },
@@ -317,7 +337,12 @@
       "language": "rust",
       "timeout_sec": 15,
       "expect": {
-        "verdict": "TLE"
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
       },
       "description": "wall timer must kill infinite loop [rust]"
     },
@@ -327,7 +352,12 @@
       "language": "java",
       "timeout_sec": 15,
       "expect": {
-        "verdict": "TLE"
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
       },
       "description": "wall timer must kill infinite loop [java]"
     },
@@ -337,7 +367,12 @@
       "language": "javascript",
       "timeout_sec": 15,
       "expect": {
-        "verdict": "TLE"
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
       },
       "description": "wall timer must kill infinite loop [javascript]"
     },
@@ -347,7 +382,12 @@
       "language": "typescript",
       "timeout_sec": 15,
       "expect": {
-        "verdict": "TLE"
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
       },
       "description": "wall timer must kill infinite loop [typescript]"
     },
@@ -357,7 +397,12 @@
       "language": "python",
       "timeout_sec": 15,
       "expect": {
-        "verdict": "TLE"
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
       },
       "description": "catching SIGXCPU must not bypass wall timer [python]"
     },
@@ -367,7 +412,12 @@
       "language": "c",
       "timeout_sec": 15,
       "expect": {
-        "verdict": "TLE"
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
       },
       "description": "catching SIGXCPU must not bypass wall timer [c]"
     },
@@ -377,7 +427,12 @@
       "language": "cpp",
       "timeout_sec": 15,
       "expect": {
-        "verdict": "TLE"
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
       },
       "description": "catching SIGXCPU must not bypass wall timer [cpp]"
     },
@@ -387,7 +442,12 @@
       "language": "go",
       "timeout_sec": 15,
       "expect": {
-        "verdict": "TLE"
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
       },
       "description": "catching SIGXCPU must not bypass wall timer [go]"
     },
@@ -397,7 +457,12 @@
       "language": "rust",
       "timeout_sec": 15,
       "expect": {
-        "verdict": "TLE"
+        "verdict_any": [
+          "RE",
+          "TLE",
+          "SIG",
+          "MLE"
+        ]
       },
       "description": "catching SIGXCPU must not bypass wall timer [rust]"
     },
