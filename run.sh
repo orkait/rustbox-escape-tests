@@ -5,14 +5,14 @@
 # waits for the verdict, and checks it against the expected outcome.
 #
 # Usage:
-#   RUSTBOX_API=https://rustbox-api.orkait.com RUSTBOX_KEY=rb_live_... ./run.sh
+#   RUSTBOX_API=https://api.rustbox.sh RUSTBOX_KEY=rb_live_... ./run.sh
 #   ./run.sh --lang c
 #   ./run.sh --test fork_bomb_c
 #   ./run.sh --verbose
 
 set -euo pipefail
 
-API="${RUSTBOX_API:-https://rustbox-api.orkait.com}"
+API="${RUSTBOX_API:-https://api.rustbox.sh}"
 KEY="${RUSTBOX_KEY:-}"
 MANIFEST="${MANIFEST:-manifest.json}"
 PAYLOADS="${PAYLOADS:-payloads}"
@@ -64,9 +64,10 @@ submit_and_check() {
         -d "$body" 2>/dev/null || echo '{"verdict":null}')
 
     local verdict exit_code stdout
-    verdict=$(echo "$resp" | jq -r '.verdict // ""')
-    exit_code=$(echo "$resp" | jq -r '.exit_code // ""')
-    stdout=$(echo "$resp" | jq -r '.stdout // ""')
+    # schema 2.0 nests these under result/output; older APIs return them top-level
+    verdict=$(echo "$resp" | jq -r '.result.verdict // .verdict // ""')
+    exit_code=$(echo "$resp" | jq -r '.result.exit_code // .exit_code // ""')
+    stdout=$(echo "$resp" | jq -r '.output.stdout // .stdout // ""')
 
     if [ -z "$verdict" ]; then
         printf "${RED}FAIL${RESET}  %-40s (no verdict - api error?)\n" "$name"

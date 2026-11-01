@@ -1,6 +1,6 @@
 # rustbox-escape-tests
 
-Public adversarial regression suite for the [Rustbox](https://rustbox.orkait.com) code-execution sandbox. 156 attack payloads across 8 languages — fork bombs, kernel syscall exploits, chroot escapes, privilege escalation, network probes, info leaks, and more. Every test asserts a specific containment outcome.
+Public adversarial regression suite for the [Rustbox](https://rustbox.sh) code-execution sandbox. 156 attack payloads across 8 languages — fork bombs, kernel syscall exploits, chroot escapes, privilege escalation, network probes, info leaks, and more. Every test asserts a specific containment outcome.
 
 **Current score on production Rustbox: 156 / 156 contained. 0 escapes.**
 
@@ -53,7 +53,7 @@ run.sh             (generic runner — POST payloads to any Rustbox-compatible A
 ## Running against a sandbox
 
 ```bash
-export RUSTBOX_API=https://rustbox-api.orkait.com
+export RUSTBOX_API=https://api.rustbox.sh
 export RUSTBOX_KEY=rb_live_your_key
 ./run.sh                     # runs all 156 tests
 ./run.sh --lang c            # just one language
@@ -118,6 +118,6 @@ Use freely; attribution requested when the payloads are lifted into another sand
 
 ## Related
 
-- [Rustbox](https://rustbox.orkait.com) — the sandbox these tests run against
-- [Rustbox documentation](https://rustbox.orkait.com/docs)
-- [Rustbox isolation model](https://rustbox.orkait.com/docs/security) — the eight kernel layers these attacks try to defeat
+- [Rustbox](https://rustbox.sh) — the sandbox these tests run against
+- [Rustbox documentation](https://rustbox.sh/docs)
+- [Rustbox isolation model](https://rustbox.sh/docs/security) — the eight kernel layers these attacks try to defeat
