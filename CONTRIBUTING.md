@@ -45,7 +45,7 @@ Keep it flat. No nested subdirectories under `payloads/<language>/`.
 ## Testing your payload locally
 
 ```bash
-export RUSTBOX_API=https://rustbox-api.orkait.com
+export RUSTBOX_API=https://api.rustbox.sh
 export RUSTBOX_KEY=rb_live_...
 ./run.sh --test your_new_test
 ```
@@ -54,4 +54,4 @@ Payloads that exceed their timeout are kept as-is — `timeout_sec` just bounds 
 
 ## Getting an API key
 
-Rustbox is in open beta. [Request access](https://rustbox.orkait.com) — we hand out beta keys within 24 hours.
+Rustbox is in open beta. [Request access](https://rustbox.sh/signup) — we hand out beta keys within 24 hours.
